@@ -1,0 +1,55 @@
+body { font-family: 'Source Sans Pro', sans-serif; }
+
+.flex-caption {
+  background: tomato;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  padding: 1em;
+}
+
+.img-container {
+  margin: 24px;
+  box-shadow: #555555 1px 2px 8px 1px;
+  min-height: 660px;
+  width: 900px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-content: center;
+}
+
+#caption {
+  font-size: 1.5em;
+  font-family: "Open Sans", sans-serif;
+  padding: 18px;
+  color: #222222;
+  border: 1px solid #bbbbbb;
+  width: 900px;
+}
+
+.caption-row {
+  padding: 24px;
+  text-align: center;
+}
+
+.caption-row span {
+  border: 2px solid black;
+  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+  margin-bottom: 5%;
+}
+
+.caption-row .pskills {
+  padding-bottom: 15px;
+  border-bottom: 1px solid black;
+}
+
+.caption-row .pdetails {
+  padding-bottom: 15px;
+  border-bottom: 1px solid black;
+  padding-top: 15px;
+}

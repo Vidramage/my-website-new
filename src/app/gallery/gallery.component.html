@@ -1,0 +1,51 @@
+<h2 class="animated fadeIn">{{title}}</h2>
+<!-- <div class="row">
+  <button class="btn btn-lg btn-info" [class.active]="filterBy=='all'" (click)="filterBy='all'">All</button>
+  <button class="btn btn-lg btn-info" [class.active]="filterBy=='boats'" (click)="filterBy='boats'">Boats</button>
+  <button class="btn btn-lg btn-info" [class.active]="filterBy=='camping'" (click)="filterBy='camping'">Camping</button>
+  <button class="btn btn-lg btn-info" [class.active]="filterBy=='library'" (click)="filterBy='library'">Library</button>
+  <ul id="thumbnailsList">
+    <li *ngFor="let image of (visibleImages | imageFilter:filterBy)">
+      <a [routerLink] = "['/image', image.id]">
+        <img src="{{image.url}}" class="tn" width="200" height="160" alt="">
+      </a>
+    </li>
+  </ul>
+</div> -->
+
+<!-- skills: version control, HTML5, CSS3, Javascript, Photoshop, Illustrator, - categories: Business & Corporate - Culture & Education - Real Estate - E-Commerce - **thought** have each button be the project and company so when you click it the floating "project" takes up the entire width and is large, and on hover have the info card animate up from the bottom with the relevant skills and "more" button -->
+
+<div class="row">
+    <ul class="menu animated fadeIn">
+      <li class="effect-1" [class.active]="filterBy=='all'" (click)="filterBy='all'"><span data-hover="ALL">ALL</span></li>
+      <li class="effect-1" [class.active]="filterBy=='technology'" (click)="filterBy='technology'"><span data-hover="TECHNOLOGY">TECHNOLOGY</span></li>
+      <li class="effect-1" [class.active]="filterBy=='education'" (click)="filterBy='education'"><span data-hover="EDUCATION">EDUCATION</span></li>
+      <li class="effect-1" [class.active]="filterBy=='architecture'" (click)="filterBy='architecture'"><span  data-hover="ARCHITECTURE">ARCHITECTURE</span></li>
+      <li class="effect-1" [class.active]="filterBy=='misc'" (click)="filterBy='misc'"><span data-hover="MISCELLANEOUS">MISCELLANEOUS</span></li>
+    </ul>
+  <!-- <button class="effect-1" [class.active]="filterBy=='all'" (click)="filterBy='all'"><span>All</span></button>
+  <button class="effect-1" [class.active]="filterBy=='technology'" (click)="filterBy='technology'"><span>Technology</span></button>
+  <button class="effect-1" [class.active]="filterBy=='realestate'" (click)="filterBy='realestate'"><span>Real-Estate</span></button>
+  <button class="effect-1" [class.active]="filterBy=='education'" (click)="filterBy='education'"><span>Education</span></button>
+  <button class="effect-1" [class.active]="filterBy=='architecture'" (click)="filterBy='architecture'"><span>Architecture</span></button>
+  <button class="effect-1" [class.active]="filterBy=='misc'" (click)="filterBy='misc'"><span>Miscellaneous</span></button> -->
+  <div class="gallerycontainer">
+    <div class="inline">
+      <div *ngFor="let image of (visibleImages | imageFilter:filterBy)" class="thumb">
+        <div class="pname">{{image.caption}}</div>
+        <a [ngStyle]="{ 'background': 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  		url(' + image.url + ')'}" [routerLink] = "['/image', image.id]"><span>{{image.caption}}</span></a>
+
+      <div class="infocard">
+        <div class="icone"><div class="cardtitle">Skills Utilized:</div>
+        <div class="carddetails">{{image.pskills}}</div>
+      </div>
+        <div class="ictwo">
+          <div class="cardtitle">Project Details:</div>
+          <div class="carddetails">{{image.pdetails}}</div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

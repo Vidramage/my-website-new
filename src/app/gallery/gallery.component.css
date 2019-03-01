@@ -1,0 +1,424 @@
+/*custom font - Montserrat*/
+@import url('http://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  margin: 0 auto;
+  border: 2px solid #000;
+  padding: 5px;
+  width:180px;
+  animation-delay: 1000ms;
+  animation-duration: 2500ms;
+  animation-iteration-count: initial;
+}
+
+.animate-show,.animate-hide {
+   -webkit-transition:all linear 1s;
+   -moz-transition:all linear 1s;
+   -ms-transition:all linear 1s;
+   -o-transition:all linear 1s;
+   transition:all linear 1s;
+}
+
+.animate-show.ng-hide-remove,
+.animate-hide.ng-hide-add.ng-hide-add-active {
+    opacity: 0;
+    display: block !important;
+}
+
+.animate-hide.ng-hide-add,
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+    display: block !important;
+  }
+
+.gallerycontainer {
+  margin: 0;
+  max-width: 100%;
+  width: 1200px;
+  padding: 10px 0 0 0;
+  min-height: 100%;
+  background: #dedede;
+  background: linear-gradient(#dedede, #f1f1f1);
+  border-radius: 5px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+/*Thumbnail Background*/
+.thumb {
+	width: 750px; height: 440px; margin: 70px;
+  padding-top: 14px;
+  -webkit-perspective: 1000px;
+	perspective: 1000px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: block !important;
+}
+
+.thumb .infocard {
+  visibility: hidden;
+}
+
+.thumb:hover .infocard {
+  background-color: #333;
+  position: relative;
+  width: 750px;
+  bottom: 100%;
+  transition: all 750ms cubic-bezier(0.68, -3, 0.265, 1.55);
+  z-index: -100;
+  visibility: visible;
+}
+
+.thumb:hover .infocard, .thumb:hover .infocard::before, .thumb:hover .infocard::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.thumb:hover .infocard {
+  width: 750px;
+  height: 345px;
+  margin: auto;
+  color: #f9c922;
+  box-shadow: inset 0 0 0 0px rgba(249, 201, 34, .5);
+}
+
+.thumb:hover .infocard::before, .thumb:hover .infocard::after {
+  content: '';
+  z-index: -1;
+  margin: -1%;
+  box-shadow: inset 0 0 0 6px;
+  animation: clipMe 8s linear infinite;
+}
+
+.thumb:hover .infocard::before {
+  animation-delay: -4s;
+}
+
+@keyframes clipMe {
+  0%, 100% {
+    clip: rect(0px, 920px, 2px, 0px);
+  }
+  25% {
+    clip: rect(0px, 2px, 920px, 0px);
+  }
+  50% {
+    clip: rect(918px, 920px, 920px, 0px);
+  }
+  75% {
+    clip: rect(0px, 920px, 920px, 918px);
+  }
+}
+
+.thumb a {
+  display: block !important; width: 750px !important; height: 300px !important;
+	/*double layered BG for lighting effect*/
+	/*disabling the translucent black bg on the main image*/
+	background-size: 0, cover !important;
+  border: 1px solid rgba(255, 255, 255, 1) !important;
+	/*3d space for children*/
+	transform-style: preserve-3d !important;
+	transition: all 1000ms !important;
+}
+
+.pname {
+  position: relative;
+  bottom: 12%;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 3rem;
+  color: #000;
+}
+
+.inline {
+  display: inline-block !important;
+}
+
+.thumb:hover a {transform: rotateX(90deg); transform-origin: bottom; }
+/*bottom surface */
+.thumb a:after {
+	/*36px high element positioned at the bottom of the image*/
+	content: ''; position: absolute; left: -1px; bottom: 0;
+	width: 750px; height: 36px;
+	/*inherit the main BG*/
+	background: inherit; background-size: cover, cover;
+  border: 1px solid rgba(255, 255, 255, 1) !important;
+	/*draw the BG bottom up*/
+	background-position: bottom;
+	/*rotate the surface 90deg on the bottom axis*/
+	transform: rotateX(90deg); transform-origin: bottom;
+}
+/*label style*/
+.thumb a span {
+	color: white; text-transform: uppercase;
+	position: absolute; top: 100%; left: 0; width: 100%; font: bold 12px/36px Montserrat; text-align: center;
+	/*the rotation is a bit less than the bottom surface to avoid flickering*/
+	transform: rotateX(-89.99deg); transform-origin: top;
+	z-index: 1;
+}
+/*shadow*/
+.thumb a:before {
+	content: ''; position: absolute; top: 0; left: 0;
+	width: 100%; height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 100px 50px rgba(0, 0, 0, 0.5);
+	transition: all 1100ms;
+	/*by default the shadow will be almost flat, very transparent, scaled down with a large blur*/
+	opacity: 0.15;
+	transform: rotateX(95deg) translateZ(-80px) scale(0.75);
+	transform-origin: bottom;
+}
+.thumb:hover a:before {
+	opacity: 1;
+	/*blurred effect using box shadow as filter: blur is not supported in all browsers*/
+	box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.5);
+	/*pushing the shadow down and scaling it down to size*/
+	transform: rotateX(0) translateZ(-60px) scale(0.85);
+}
+
+.thumb .infocard {
+  background-color: transparent;
+  position: relative;
+  height: 0;
+  bottom: 26.5%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.menu {
+  width: 100%;
+  text-align: center;
+  animation-delay: 1000ms;
+  animation-duration: 2500ms;
+  animation-iteration-count: initial;
+  margin: 2% auto;
+}
+
+.menu li {
+  display: inline-block;
+  list-style-type: none;
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+
+.menu li span {
+  color: #7a7a7a;
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.menu .effect-1 span::before {
+  padding: 7px 0;
+}
+
+.menu .active span {
+  color: #333;
+  border-bottom: 1px solid #333;
+}
+
+.effect-1 span {
+  padding: 10px 0;
+  color: #ccc;
+  text-shadow: none;
+  position: relative;
+  text-decoration: none;
+  text-shadow: 0 0 1px rgba(255,255,255,0.3);
+  font-weight: 400;
+  margin-right: 10px;
+  letter-spacing: 1px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.effect-1 span::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  padding: 9px 0;
+  max-width: 0;
+  border-bottom: 1px solid #333;
+  color: #333;
+  font-weight: 400;
+  content: attr(data-hover);
+  -webkit-transition: max-width 400ms;
+  -moz-transition: max-width 400ms;
+  transition: max-width 400ms;
+}
+
+.effect-1.active span::before {
+  content: "";
+}
+
+.effect-1 span:hover::before, .effect-1 span:focus::before {
+  max-width: 100%;
+}
+
+.cardtitle {
+  background-color: #333;
+  border-bottom: 2px solid #f9c922;
+  padding: 5px 0;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.carddetails {
+  padding: 10px;
+  font-size: .85em;
+  color: #fff;
+}
+
+@media only screen and (max-width: 991px) {
+  .menu {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 0 3% 0;
+  }
+  #da-slider {
+    min-width: 100% !important;
+  }
+  div#da-slider {
+    max-width: 100% !important;
+    min-height: 100% !important;
+  }
+  .da-slider {
+    max-width: 100% !important;
+    min-height: 100% !important;
+  }
+  .menu li {
+    display: block;
+    border-top: 1px solid #eee;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+  }
+  .menu li:last-child {
+    border-bottom: 1px solid #eee;
+  }
+  .inline {
+    display: inline-block !important;
+    max-width: 100%;
+    min-height: 100%;
+    position: relative;
+  }
+  .gallerycontainer {
+    max-width: 100% !important;
+    min-height: 100% !important;
+  }
+  .thumb {
+    max-width: 100%;
+    min-height: 100%;
+    height: 500px;
+    margin: 4rem 0 18rem 0;
+    perspective: 1000px;
+    backface-visibility: hidden;
+    display: block !important;
+  }
+  .thumb a {
+    display: block !important;
+    max-width: 100% !important;
+    height: 370px !important;
+    width: 750px !important;
+    background-size: 0, cover !important;
+    border: 1px solid rgba(255,255,255,1) !important;
+    transform-style: preserve-3d !important;
+    transition: all 1000ms !important;
+  }
+  .infocard {
+    max-width:100%;
+    max-height:100%;
+  }
+  .thumb a span {
+    color: white;
+    text-transform: uppercase;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin: 0 auto;
+    width: 100%;
+    font: bold 12px/36px Montserrat;
+    align-content: center;
+    align-items: center;
+    text-align:center;
+    -webkit-transform: rotateX(-89.99deg);
+    transform: rotateX(-89.99deg);
+    -webkit-transform-origin: top;
+    z-index: 1;
+    max-width:100%;
+    min-height:100%;
+  }
+  .thumb a:after {
+    content: '';
+    position: absolute;
+    left: -1px;
+    bottom: 0;
+    height: 10%;
+    width: 100%;
+    max-width: 100%;
+    background: inherit;
+    background-size: cover, cover;
+    border: 1px solid rgba(255, 255, 255, 1) !important;
+    background-position: bottom;
+    transform: rotateX(90deg);
+    -webkit-transform: rotateX(90deg);
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+  }
+  .thumb a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 0 100px 50px rgba(0,0,0,0.5);
+    transition: all 1100ms;
+    opacity: .15;
+    -webkit-transform: rotateX(95deg) translateZ(-80px) scale(0.75);
+    transform: rotateX(95deg) translateZ(-80px) scale (0.75);
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+  }
+  .pname {
+    position: absolute;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.5rem;
+    color: black;
+    width: 100%;
+    top: -7%;
+    text-align: center;
+  }
+  .carddetails {
+    padding: 2px;
+  }
+  .thumb:hover .infocard {
+    width: 750px;
+    height: 345px;
+    margin: auto;
+    color: #f9c922;
+    box-shadow: inset 0 0 0 0px rgba(249, 201, 34, .5);
+  }
+}
+@media only screen and (max-width: 450px) {
+  .effect-1 span::before {
+    content: "";
+    border-bottom: 0px;
+  }
+  .effect-1 span:hover {
+    color: #111;
+  }
+}
+@media only screen and (max-width: 321px)
+{
+  .effect-1 span {
+  	font-size: 12px;
+  }
+}
